@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KloudeSIM SEO Agent</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="logo">KloudeSIM<span>SEO</span></div>
+    <nav>
+      <a href="#" class="nav-link active" data-view="pages">Pages</a>
+      <a href="#" class="nav-link" data-view="pricing">Pricing Data</a>
+      <a href="#" class="nav-link" data-view="competitors">Competitor Tracker</a>
+      <a href="#" class="nav-link" data-view="generate">Generate</a>
+    </nav>
+    <div class="sidebar-footer">
+      <button id="btn-batch" class="btn-secondary">Batch Generate</button>
+      <button id="btn-diff" class="btn-secondary">Competitor Diff</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <!-- Pages view -->
+    <section id="view-pages" class="view active">
+      <header class="view-header">
+        <h1>Generated Pages</h1>
+        <button class="btn-primary" id="btn-open-generate">+ New Page</button>
+      </header>
+      <div id="pages-list" class="card-grid"></div>
+      <p id="pages-empty" class="empty-state" style="display:none">No pages generated yet. Click <strong>+ New Page</strong> to start.</p>
+    </section>
+
+    <!-- Pricing view -->
+    <section id="view-pricing" class="view">
+      <header class="view-header"><h1>KloudeSIM Pricing Data</h1></header>
+      <div class="table-wrap"><table id="pricing-table"><thead></thead><tbody></tbody></table></div>
+    </section>
+
+    <!-- Competitors view -->
+    <section id="view-competitors" class="view">
+      <header class="view-header">
+        <h1>Competitor Tracker</h1>
+        <button class="btn-secondary" id="btn-run-diff">Run Diff Now</button>
+      </header>
+      <div class="table-wrap"><table id="competitor-table"><thead></thead><tbody></tbody></table></div>
+    </section>
+
+    <!-- Generate view -->
+    <section id="view-generate" class="view">
+      <header class="view-header"><h1>Generate Destination Page</h1></header>
+      <div class="form-card">
+        <label>Destination</label>
+        <select id="gen-country"></select>
+        <label style="margin-top:16px">Force regenerate if exists</label>
+        <input type="checkbox" id="gen-force" />
+        <button class="btn-primary" style="margin-top:24px" id="btn-run-generate">Generate Page</button>
+        <div id="gen-output" class="log-box" style="display:none"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Page preview modal -->
+  <div id="modal" class="modal" style="display:none">
+    <div class="modal-inner">
+      <button class="modal-close" id="modal-close">✕</button>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

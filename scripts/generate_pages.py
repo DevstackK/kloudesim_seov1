@@ -17,6 +17,7 @@ Requires: Claude Code installed and authenticated (`claude` on PATH).
 
 import argparse
 import csv
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -80,7 +81,8 @@ def main() -> int:
                "--allowedTools", "Read,Write,Edit,Glob,Grep"]
         if args.model:
             cmd += ["--model", args.model]
-        result = subprocess.run(cmd, cwd=ROOT)
+        env = {k: v for k, v in os.environ.items() if k != "CLAUDE_CODE_INCLUDE_PARTIAL_MESSAGES"}
+        result = subprocess.run(cmd, cwd=ROOT, env=env)
         if result.returncode != 0 or not (OUTPUT_DIR / f"esim-{slug}.md").exists():
             failures.append(country)
             print(f"!! {country} failed or produced no output file\n")
